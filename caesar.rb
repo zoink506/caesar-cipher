@@ -12,8 +12,10 @@ end
 
 def calculate_cipher(input = "", amount)
   # Check to see if input and amount are valid strings and numbers
-  return :error if amount.to_i <= 0 || input.ascii_only? == false || input == ""
   amount = amount.to_i
+  return nil if input == "" || input.class != String
+  return nil if input.ascii_only? == false
+  return input if amount <= 0
 
   # Convert input into array of ascii values
   char_array = input.bytes
@@ -52,4 +54,4 @@ def calculate_cipher(input = "", amount)
   new_char_array.join("")
 end 
 
-getInput()
+#getInput()
